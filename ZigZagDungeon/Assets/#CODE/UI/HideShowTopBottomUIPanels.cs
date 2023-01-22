@@ -19,7 +19,6 @@ namespace ZigZagDungeon
             if (!topUIElement) Debug.LogError("topUIElement hasn't been setup");
             if (!bottomUIElement) Debug.LogError("bottomUIElement hasn't been setup");
         }
-
         public void HideUIOnNewGameStart() => anim.Play(hideAnimationName);
      
         public void HideUIElementsOnAnimationEnd()

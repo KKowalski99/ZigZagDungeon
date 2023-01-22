@@ -68,20 +68,18 @@ namespace ZigZagDungeon
         public void UpdateUI(int _gloryScore, int _goldScore)
         {
             gloryScore = _gloryScore;
-            gloryScoreText.text = $"Glory: {gloryScore.ToString()}";
+            gloryScoreText.text = $"Glory: {gloryScore}";
             goldScore = _goldScore;
-            goldScoreText.text = $"Gold: {goldScore.ToString()}";
-
-
+            goldScoreText.text = $"Gold: {goldScore}";
         }
 
         private void DisplayFinalScore()
         {
-            gloryScoreFinalText.text = $"GLORY SCORE: {gloryScore.ToString()}";
-            goldScoreFinalText.text = $"GOLD SCORE: {goldScore.ToString()}";
+            gloryScoreFinalText.text = $"GLORY SCORE: {gloryScore}";
+            goldScoreFinalText.text = $"GOLD SCORE: {goldScore}";
 
             int totalScore = gloryScore + goldScore;
-            totalScoreFinalText.text = $"TOTAL SCORE: {totalScore.ToString()}";
+            totalScoreFinalText.text = $"TOTAL SCORE: {totalScore}";
         }
 
         #region SwitchUITabs
@@ -166,7 +164,6 @@ namespace ZigZagDungeon
 
         #region Buttons
 
-      
         private bool optionButtonPressed;
         private bool quitButtonPressed;
         public void ButtonManager(string buttonName)
@@ -176,14 +173,9 @@ namespace ZigZagDungeon
                 case "options":
                     if (!optionButtonPressed)
                     {
-
-
                         optionButton.image.overrideSprite = optionButtonPressedImage;
-
                         ButtonState(buttonName, optionButtonPressed);
-
                         optionButtonPressed = true;
-
 
                         if (quitButtonPressed)
                         {
@@ -193,7 +185,6 @@ namespace ZigZagDungeon
                     }
                     else
                     {
-
                         optionButton.image.overrideSprite = optionButtonDefaultImage;
                         ButtonState(buttonName, optionButtonPressed);
                         optionButtonPressed = false;
@@ -229,7 +220,6 @@ namespace ZigZagDungeon
 
             }
         }
-
         private void ButtonState(string buttonName, bool state)
         {
              if (buttonName == "options") { uiButtonManager.OptionsButton(state); }

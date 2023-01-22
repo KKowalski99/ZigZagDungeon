@@ -10,16 +10,12 @@ namespace ZigZagDungeon
         List<GameObject> tiles = new List<GameObject>();
         Vector3 startingVector = new Vector3(-2.1f, 0, 2.8f);
 
-
         Vector3 left = new Vector3(0.7f, 0, 0.7f);
         Vector3 right = new Vector3(-0.7f, 0, 0.7f);
-
 
         int lastTileIndex;
 
         [SerializeField] int pathLength = 25;
-
-
 
         [SerializeField] [Range(0.01f, 1f)] public float chanceForCollectible;
         [SerializeField] GameObject monster;
@@ -51,8 +47,6 @@ namespace ZigZagDungeon
             RemoveLastNode();
         }
 
-
-
         void AddNextNode()
         {
             lastTileIndex = tiles.Count - 1;
@@ -72,8 +66,8 @@ namespace ZigZagDungeon
 
 
 
-            bool _temp = CheckIfSpawnAllowed();
-            if (_temp == true)
+            bool spawnAllowed = CheckIfSpawnAllowed();
+            if (spawnAllowed)
             {
                 GameObject tempObject = ObjectToSpawn();
                 tempObject = Instantiate(tempObject, transform.position, Quaternion.identity);
@@ -82,34 +76,15 @@ namespace ZigZagDungeon
 
                 if (logic == 1) tempObject.transform.Rotate(0, 0, 0);
                 else tempObject.transform.Rotate(0, 90, 0);
-
-
             }
-
-
-        }
-
-
-        private void Update()
-        {
-            Player player = FindObjectOfType<Player>();
-
-
-
         }
         public bool CheckIfSpawnAllowed()
         {
             float temp = Random.Range(0.01f, 1f);
 
-            if (temp < chanceForCollectible)
-            {
-
-                return true;
-            }
-            else
-            {
-                return false;
-            }
+            if (temp < chanceForCollectible) return true;
+            else return false;
+            
         }
 
         public GameObject ObjectToSpawn()
@@ -119,10 +94,8 @@ namespace ZigZagDungeon
             if (temp == 0) return collectible;
             else return monster;
         }
-
         void RemoveLastNode()
         {
-
             Destroy(tiles[0]);
             tiles.Remove(tiles[0]);
         }

@@ -8,17 +8,19 @@ namespace ZigZagDungeon
     {
 
         Player player;
-        enum direction { Left, Right };
+        enum Direction { Left, Right };
+        Direction dir;
+
         private float speed;
 
-        private static string dir;
+
 
         private void Start()
         {
             player = GetComponent<Player>();
             speed = player.speed;
 
-            dir = direction.Left.ToString();
+            dir = Direction.Left;
 
         }
         void FixedUpdate() => Locomotion();
@@ -26,7 +28,7 @@ namespace ZigZagDungeon
 
         void Locomotion()
         {
-            if (dir == direction.Left.ToString())
+            if (dir == Direction.Left)
             {
                 transform.Translate(-0.45f * speed, 0, 0.45f * speed);
             }
@@ -39,16 +41,16 @@ namespace ZigZagDungeon
         public void ChangeDirection(GameObject root)
         {
 
-            if (dir == direction.Right.ToString())
+            if (dir == Direction.Right)
             {
-                dir = direction.Left.ToString();
+                dir = Direction.Left;
 
                 root.transform.eulerAngles = new Vector3(root.transform.eulerAngles.x, -45, root.transform.eulerAngles.z);
 
             }
-            else if (dir == direction.Left.ToString())
+            else if (dir == Direction.Left)
             {
-                dir = direction.Right.ToString();
+                dir = Direction.Right;
 
                 root.transform.eulerAngles = new Vector3(root.transform.eulerAngles.x, 45, root.transform.eulerAngles.z);
             }

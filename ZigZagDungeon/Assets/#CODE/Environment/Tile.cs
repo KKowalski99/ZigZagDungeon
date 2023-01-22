@@ -12,9 +12,6 @@ namespace ZigZagDungeon
         [SerializeField] float updateDelay = 0.5f;
         private void Start()
         {
-            BoxCollider collider = GetComponentInChildren<BoxCollider>();
-            OnTriggerExit(collider);
-
             rb = GetComponent<Rigidbody>();
             pathGenerator = FindObjectOfType<PathGenerator>();
         }
@@ -26,19 +23,15 @@ namespace ZigZagDungeon
 
             }
         }
-
         void StartToFall()
         {
             rb.isKinematic = false;
             rb.useGravity = true;
             Invoke(nameof(CallPathUpdate), updateDelay);
         }
-
-        private void CallPathUpdate()
-        {
-            pathGenerator.UpdatePath();
+        private void CallPathUpdate() => pathGenerator.UpdatePath();
 
 
-        }
+       
     }
 }

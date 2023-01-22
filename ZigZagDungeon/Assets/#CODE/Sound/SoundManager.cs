@@ -17,10 +17,8 @@ namespace ZigZagDungeon
             {
                 s.source = gameObject.AddComponent<AudioSource>();
                 s.source.clip = s.clip;
-
                 s.source.volume = s.volume;
                 s.source.pitch = s.pitch;
-
 
                 if (s.pitch == 0)
                 {
@@ -31,7 +29,6 @@ namespace ZigZagDungeon
 
         public void Play(string name)
         {
-
             Sound s = Array.Find(sounds, sound => sound.name == name);
 
             if (s.loop != true)
@@ -40,6 +37,7 @@ namespace ZigZagDungeon
             }
             else PlayAsLoop(s);
         }
+
         private void PlayAsLoop(Sound s)
         {
             if (s.source.isPlaying) return;

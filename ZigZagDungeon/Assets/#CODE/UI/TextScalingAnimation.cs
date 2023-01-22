@@ -9,18 +9,14 @@ namespace ZigZagDungeon
     {
         float originalScale;
         [SerializeField] [Tooltip("Value for x and y")] float targetScale;
-       [Range(0.01f, 1f)] [SerializeField] float animationSpeedModifier = 0.5f;
-
+        [Range(0.01f, 1f)] [SerializeField] float animationSpeedModifier = 0.5f;
         float valueToAdd = 0.0125f;
-
         enum ScaleDirection { Down, Up };
         ScaleDirection scaleDirection;
 
         [SerializeField] [Tooltip("Activate scaling effect")] bool activateScalingEffect = true;
         private void Start()
         {
-         
-
             float textScaleX = gameObject.transform.localScale.x;
             float textScaleY = gameObject.transform.localScale.y;
 
@@ -37,8 +33,6 @@ namespace ZigZagDungeon
             else if (originalScale > targetScale) scaleDirection = ScaleDirection.Down;
             else activateScalingEffect = false;
         }
-
-      
         void Update()
         {
             if (!activateScalingEffect) return;
@@ -48,7 +42,6 @@ namespace ZigZagDungeon
           
           if(scaleDirection == ScaleDirection.Up) ScaleUp(currentScale);
           else ScaleDown(currentScale);
-
         }
         void ScaleUp(float currentScale)
         {

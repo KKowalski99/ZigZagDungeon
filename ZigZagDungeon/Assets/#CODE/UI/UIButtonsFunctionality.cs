@@ -15,11 +15,9 @@ namespace ZigZagDungeon
             else Debug.LogError("PauseGame  script has not been found");
         }
 
- 
         const string gameUITabName = "game";
         const string menuUITabName = "menu";
         const string quitUITabName = "quit";
-
         public void OptionsButton(bool buttonPressed)
         {
             if (!buttonPressed) uiHandler.SwitchUITabs(menuUITabName);
@@ -30,8 +28,6 @@ namespace ZigZagDungeon
         {
             if (!buttonPressed) uiHandler.SwitchUITabs(quitUITabName); 
             else uiHandler.SwitchUITabs(gameUITabName);
-        }
-            
-        
+        }           
     }
 }

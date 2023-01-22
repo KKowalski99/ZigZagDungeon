@@ -13,7 +13,6 @@ namespace ZigZagDungeon
         private PlayerAnimationHandler playerAnimationHandler;
         public GameObject root;
         public Animator anim;
-
         private void Awake()
         {
             if (!Instance) Instance = this;
